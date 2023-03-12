@@ -5,5 +5,7 @@ export class UserEntity {
 
   age: Number;
 
+  phone: string;
+
   created_at: Date;
 }
