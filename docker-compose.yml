@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  app:
+    build: . 
+    entrypoint: .docker/entrypoint.sh
+    container_name: gdg-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+    depends_on:
+      - db 
+      
+
+  db:
+    build: .docker/postgres 
+    container_name: gdg-db 
+    restart: always
+    tty: true
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/dbdata:/var/lib/postgressql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=gdgdb 
+
+  
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: gdg-nestjs-pgadmin
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
