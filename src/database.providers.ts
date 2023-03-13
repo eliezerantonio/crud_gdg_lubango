@@ -14,7 +14,7 @@ export const databaseProviders = [
         database: 'gdgdb',
         entities: [__dirname + '/../**/*.entity.js'],
 
-        synchronize: false,
+        synchronize: true,
       });
 
       return dataSource.initialize();
@@ -31,6 +31,6 @@ export const dataSource = new DataSource({
   database: 'gdgdb',
   entities: [__dirname + '/../**/*.entity.js'],
 
-  synchronize: false,
+  synchronize: true,
   migrations: [CreateUsersTable1678676253058],
 });

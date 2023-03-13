@@ -13,7 +13,6 @@ export class CreateUsersTable1678676253058 implements MigrationInterface {
             type: 'varchar',
           },
           { name: 'age', type: 'integer' },
-          { name: 'id', type: 'varchar' },
           {
             name: 'created_at',
             type: 'timestamp',

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dto/create-user.dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto/update-user.dto';
@@ -6,7 +6,7 @@ import { UserEntity } from '../entities/user.entity/user.entity';
 
 @Injectable()
 export class UsersService {
-  
+  @Inject('USERS_REPOSITORY')
   private readonly userRepository: Repository<UserEntity>;
 
   async findAll() {

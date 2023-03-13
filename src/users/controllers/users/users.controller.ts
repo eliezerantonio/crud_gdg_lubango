@@ -20,7 +20,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get()
+  @Get(':id')
   findOne(@Param(':id') id) {
     return this.usersService.findOne(id);
   }
